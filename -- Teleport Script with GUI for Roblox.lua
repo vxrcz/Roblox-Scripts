@@ -83,3 +83,25 @@ function teleportToPlayer(playerName)
     else
         StatusLabel.Text = "Player not found."
     end
+end
+
+-- Connect button functions
+TeleportButton.MouseButton1Click:Connect(function()
+    local playerName = PlayerInput.Text
+    if playerName ~= "" then
+        teleportToPlayer(playerName)
+    else
+        StatusLabel.Text = "Please enter a player name."
+    end
+end)
+
+-- Exit Button functionality
+ExitButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+-- Minimize Button functionality (Hide the frame instead of minimizing)
+MinimizeButton.MouseButton1Click:Connect(function()
+    Frame.Visible = not Frame.Visible
+    MinimizeButton.Text = Frame.Visible and "Minimize" or "Restore"
+end)
