@@ -102,6 +102,10 @@ end)
 
 -- Minimize Button functionality (Hide and restore the frame)
 MinimizeButton.MouseButton1Click:Connect(function()
-    Frame.Visible = not Frame.Visible  -- Toggle visibility of the frame
-    MinimizeButton.Text = Frame.Visible and "Minimize" or "Restore"  -- Change button text based on visibility
+    -- Toggle visibility of the frame, but don't destroy or close it
+    Frame.Visible = not Frame.Visible
+    
+    -- Change the text of the Minimize button to either Minimize or Restore
+    MinimizeButton.Text = Frame.Visible and "Minimize" or "Restore"
 end)
+
