@@ -111,3 +111,28 @@ MinimizeButton.MouseButton1Click:Connect(function()
         MinimizeButton.Text = "Minimize"  -- Change the button text back to Minimize
     end
 end)
+
+-- Make the frame movable
+local dragging = false
+local dragInput, dragStart, startPos
+
+TitleLabel.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = input.Position
+        startPos = Frame.Position
+    end
+end)
+
+TitleLabel.InputChanged:Connect(function(input)
+    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local delta = input.Position - dragStart
+        Frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end)
+
+TitleLabel.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = false
+    end
+end)
