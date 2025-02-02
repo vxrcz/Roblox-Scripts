@@ -100,8 +100,8 @@ ExitButton.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
 end)
 
--- Minimize Button functionality (Hide the frame instead of minimizing)
+-- Minimize Button functionality (Hide and restore the frame)
 MinimizeButton.MouseButton1Click:Connect(function()
-    Frame.Visible = not Frame.Visible
-    MinimizeButton.Text = Frame.Visible and "Minimize" or "Restore"
+    Frame.Visible = not Frame.Visible  -- Toggle visibility of the frame
+    MinimizeButton.Text = Frame.Visible and "Minimize" or "Restore"  -- Change button text based on visibility
 end)
